@@ -34,6 +34,27 @@ async function parseText(req, res) {
     }
 }
 
+async function getExpenses(req, res) {
+    try {
+
+        const expenses = expenseModel.getExpenses();
+
+        res.json({
+            success: true,
+            data: expenses
+        });
+
+    } catch (error) {
+
+        res.status(500).json({
+            success: false,
+            error: error.message
+        });
+
+    }
+}
+
 module.exports = {
-    parseText
+    parseText,
+    getExpenses
 };

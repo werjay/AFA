@@ -38,6 +38,24 @@ function createExpense(expense) {
 }
 
 
+function getExpenses() {
+
+    const stmt = db.prepare(`
+        SELECT *
+        FROM expenses
+        ORDER BY id DESC
+    `);
+
+    const expenses = stmt.all();
+
+    return expenses.map(expense => ({
+        ...expense,
+        tag: JSON.parse(expense.tag || "[]")
+    }));
+}
+
+
 module.exports = {
-    createExpense
+    createExpense,
+    getExpenses
 };
