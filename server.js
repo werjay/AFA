@@ -1,5 +1,7 @@
 require("dotenv").config();
 
+require("./src/database/sqlite");
+
 const express = require("express");
 const cors = require("cors");
 
