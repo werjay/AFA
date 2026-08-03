@@ -1,4 +1,5 @@
 const geminiService = require("../services/geminiService");
+const { parseJson } = require("../utils/jsonParser");
 
 async function parseText(req, res) {
     try {
@@ -8,7 +9,7 @@ async function parseText(req, res) {
 
         res.json({
             success: true,
-            data: JSON.parse(result)
+            data: parseJson(result)
         });
     } catch (error) {
         console.error(error);
