@@ -6,7 +6,7 @@ const expenseController = require("../controllers/expenseController");
 
 
 router.post(
-    "/parse-text",
+    "/",
     expenseController.parseText
 );
 
