@@ -1,6 +1,1 @@
-POST http://localhost:3000/api/expense/parse-text
-Content-Type: application/json
-
-{
-    "text": "午餐245"
-}
+GET http://localhost:3000/api/expense
