@@ -33,8 +33,28 @@ async function parseExpense(text, categories) {
 
 }
 
+async function parseExpenseImage(buffer, mimeType) {
+
+    const prompt = promptService.getExpenseImagePrompt();
+
+    const result = await model.generateContent([
+        prompt,
+        {
+            inlineData: {
+                data: buffer.toString("base64"),
+                mimeType
+            }
+        }
+    ]);
+
+    const response = await result.response;
+
+    return response.text();
+}
+
 
 module.exports = {
     generate,
-    parseExpense
+    parseExpense,
+    parseExpenseImage
 };

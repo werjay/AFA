@@ -1,14 +1,6 @@
-POST http://localhost:3000/api/expenses/confirm
+GET  HTTP/1.1   http://localhost:3000/api/expenses
 Content-Type: application/json
 
-
 {
-    "name": "Apple Watch錶帶",
-    "amount": 1200,
-    "currency": "TWD",
-    "category": "科技設備",
-    "subcategory": "週邊配件",
-    "merchant": "",
-    "tag": [],
-    "note": ""
+    "text": "午餐120"
 }

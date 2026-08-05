@@ -3,7 +3,7 @@ const categoryService = require("../services/categoryService");
 
 function validateExpense(expense) {
 
-    const categories = categoryService.getCategories();
+    const categories = categoryService.getExpenseCategories();
 
     // 檢查主分類
     if (!categories.hasOwnProperty(expense.category)) {

@@ -31,6 +31,40 @@ async function parseText(req, res) {
     }
 }
 
+async function parseImage(req, res) {
+
+    try {
+
+        if (!req.file) {
+            return res.status(400).json({
+                success:false,
+                error:"image is required"
+            });
+        }
+
+        const expense = await expenseService.parseImage(
+            req.file.buffer,
+            req.file.mimetype
+        );
+
+        res.json({
+            success: true,
+            data: expense
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        res.status(500).json({
+            success: false,
+            error: error.message
+        });
+
+    }
+
+}
+
 async function getExpenses(req, res) {
     try {
         const data = expenseService.getExpenses();
@@ -78,6 +112,7 @@ async function confirmExpense(req, res) {
 
 module.exports = {
     parseText,
+    parseImage,
     getExpenses,
     confirmExpense
 };

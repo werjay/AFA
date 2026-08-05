@@ -1,19 +1,11 @@
-const categories = require("../data/categories.json");
+const expenseCategories = require("../config/expenseCategories.json");
 
-function getCategories() {
-    return categories;
+
+function getExpenseCategories() {
+    return expenseCategories;
 }
 
-function getCategoryList() {
-    return Object.keys(categories);
-}
-
-function getSubcategories(category) {
-    return categories[category] || [];
-}
 
 module.exports = {
-    getCategories,
-    getCategoryList,
-    getSubcategories,
+    getExpenseCategories
 };
