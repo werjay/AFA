@@ -7,6 +7,15 @@ const dbPath = path.join(
     "../../data/afa.db"
 );
 
+if (!fs.existsSync(dataDir)) {
+    fs.mkdirSync(dataDir, { recursive: true });
+}
+
+const dbPath = path.join(
+    dataDir,
+    "afa.db"
+);
+
 // 建立資料庫
 const db = new Database(dbPath);
 
