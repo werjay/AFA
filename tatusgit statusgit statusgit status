@@ -1,0 +1,10 @@
+[33mdf3116a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m feat: integrate moze shortcut and protect database files
+[33meae1c7d[m feat: add expense validation layer
+[33mb453932[m refactor: simplify expense api endpoint
+[33m6aeba2f[m docs: add project documentation
+[33mb588daa[m refactor: add expense service layer
+[33m71f08c8[m feat: add expense query API
+[33mc009ea2[m feat: add expense database storage
+[33m87aafed[m feat: add json response sanitizer
+[33m89f5fa1[m feat: add AI expense parsing API
+[33m7c4fcd2[m chore: initialize AFA project

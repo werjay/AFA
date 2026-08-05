@@ -11,6 +11,12 @@ router.post(
 );
 
 
+router.post(
+    "/confirm",
+    expenseController.confirmExpense
+);
+
+
 router.get(
     "/",
     expenseController.getExpenses

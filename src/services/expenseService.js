@@ -46,7 +46,23 @@ function getExpenses() {
     return expenseModel.getExpenses();
 }
 
+function confirmExpense(expense) {
+
+    const saved = expenseModel.createExpense({
+        date: new Date().toISOString().split("T")[0],
+        ...expense
+    });
+
+
+    return {
+        id: saved.id,
+        expense
+    };
+
+}
+
 module.exports = {
     parseText,
-    getExpenses
+    getExpenses,
+    confirmExpense
 };

@@ -1,4 +1,5 @@
 const expenseService = require("../services/expenseService");
+const response = require("../utils/responseHelper");
 
 async function parseText(req, res) {
     try {
@@ -48,7 +49,35 @@ async function getExpenses(req, res) {
     }
 }
 
+async function confirmExpense(req, res) {
+
+    try {
+
+        const expense = req.body;
+
+        const data = expenseService.confirmExpense(expense);
+
+        return response.success(
+            res,
+            data
+        );
+
+
+    } catch(error) {
+
+        console.error(error);
+
+        return response.error(
+            res,
+            error.message
+        );
+
+    }
+
+}
+
 module.exports = {
     parseText,
-    getExpenses
+    getExpenses,
+    confirmExpense
 };
