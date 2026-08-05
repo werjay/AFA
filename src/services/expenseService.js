@@ -1,17 +1,40 @@
 const geminiService = require("./geminiService");
 const expenseModel = require("../models/expenseModel");
 const { parseJson } = require("../utils/jsonParser");
+const categoryService = require("./categoryService");
 
 async function parseText(text) {
 
-    const result = await geminiService.parseExpense(text);
+    const categories = categoryService.getCategories();
+
+    const result = await geminiService.parseExpense(
+        text,
+        categories
+    );
 
     const expense = parseJson(result);
 
-    const saved = expenseModel.createExpense({
-        date: new Date().toISOString().split("T")[0],
-        ...expense
-    });
+const validator = require("../utils/expenseValidator");
+
+const validation = validator.validateExpense(expense);
+
+
+if (!validation.valid) {
+
+    return {
+        needConfirm: true,
+        reason: validation.error,
+        message: validation.message,
+        expense
+    };
+
+}
+
+
+const saved = expenseModel.createExpense({
+    date: new Date().toISOString().split("T")[0],
+    ...expense
+});
 
     return {
         id: saved.id,
@@ -19,13 +42,9 @@ async function parseText(text) {
     };
 }
 
-
 function getExpenses() {
-
     return expenseModel.getExpenses();
-
 }
-
 
 module.exports = {
     parseText,

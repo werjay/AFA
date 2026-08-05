@@ -2,20 +2,30 @@ const expenseService = require("../services/expenseService");
 
 async function parseText(req, res) {
     try {
-        const { text } = req.body;
+
+        const { text } = req.body || {};
+
+        if (!text) {
+            return res.status(400).json({
+                success:false,
+                error:"text is required"
+            });
+        }
 
         const data = await expenseService.parseText(text);
 
         res.json({
-            success: true,
-            data,
+            success:true,
+            data
         });
-    } catch (error) {
+
+    } catch(error) {
+
         console.error(error);
 
         res.status(500).json({
-            success: false,
-            error: error.message
+            success:false,
+            error:error.message
         });
     }
 }

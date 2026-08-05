@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/health", healthRoutes);
-app.use("/api/expense", expenseRoutes);
+app.use("/api/expenses", expenseRoutes);
 
 const PORT = process.env.PORT || 3000;
 
